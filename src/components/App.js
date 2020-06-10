@@ -12,7 +12,7 @@ export function App() {
   return (
     <div>
       <h1>A Pokemon Knowledge Test!</h1>
-      <PokeSearch />
+      <PokeSearch onSubmit = {addNewPokemon}/>
       <PokeList />
     </div>
   );
