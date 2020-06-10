@@ -1,19 +1,19 @@
-import * as React from 'react';
+import React, {useState} from 'react';
+import PokeList from './PokeList';
+import PokeSearch from './PokeSearch';
 
-export function App({ initialData }) {
-  const [count, setCount] = React.useState(0);
+// An app that tests your Pokemon knowledge!
+
+export function App() {
+  let [pokeList, setPokeList] = useState([]);
+  const addNewPokemon = (name) => {
+      setPokeList([...pokeList, name]);
+  }
   return (
     <div>
-      <h1>{initialData.appName}</h1>
-      This is a sample stateful and server-side rendered React application.
-      <br />
-      <br />
-      Here is a button that will track how many times you click it:
-      <br />
-      <br />
-      <button title="increment" onClick={() => setCount(count + 1)}>
-        {count}
-      </button>
+      <h1>A Pokemon Knowledge Test!</h1>
+      <PokeSearch />
+      <PokeList />
     </div>
   );
 }

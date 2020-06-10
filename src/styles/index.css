@@ -1,13 +1,39 @@
-:root {
-  --color-main: #333;
+/* Nerdy secret: You can use "less" below! Don't tell anybody... */
+
+/* .github-profile {
+	margin: 1rem;
+  img {
+    width: 75px;
+  }
+  .info {
+    display: inline-block;
+    margin-left: 12px;
+		.name {
+    	font-size: 1.25rem;
+      font-weight: bold;
+    }
+  }
+} */
+
+.PokeSearch {
+  margin: 1rem;
+  
+}
+.Pokemon .info {
+  display: inline-block;
+  margin-left: 12px;
 }
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
+form {
+	border: thin solid #888;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
 }
 
-body {
-  color: var(--color-main);
+.header {
+	text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
