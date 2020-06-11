@@ -8,7 +8,7 @@ import correct_pokemon_check from '../correct-pokemon-check';
 const UseGameState = (gameStart) => {
     const [pokeList, setPokeList] = useState([]);
     const [score, setScore] = useState(0);
-    const [secondsLeft, setSecondsLeft] = useState(20);
+    const [secondsLeft, setSecondsLeft] = useState(60);
     const [resultVisible, setResultVisible] = useState(false);
 
     // Fix this so that timer doesn't rerender the WHOLE page every tick. Timer component maybe?
