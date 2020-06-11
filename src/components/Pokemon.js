@@ -1,4 +1,5 @@
 import React from 'react';
+import correct_pokemon_check from '../correct-pokemon-check';
 
 const Pokemon = (props) => {
     const pokemon = props;
@@ -22,55 +23,7 @@ const Pokemon = (props) => {
         }
         
     }
-    
-    if (attribute[0] === 'weight') {
-        const weight = attribute[1];
-        if (pokemon.weight < weight + 20 && pokemon.weight > weight -20) {
-            color = 'green';
-            props.setScore(props.score + 1)
-        }
-        else {             
-            color = 'red';
-        }
-    }
-    else {
-        let attributeType;
-        let BreakException = {};
-        if (attribute[0] === 'type') {
-            attributeType = pokemon.types;
-            try {
-                attributeType.forEach(attack => {
-                    if (attack.type.name === attribute[1]) {
-                        color = 'green';
-                        console.log('compared');
-                        props.setScore(props.score + 1)
-                        throw BreakException;
-                    }                        
-                    color = 'red';
-                });
-            }
-            catch(e) {
-                if (e !== BreakException) throw e;
-            }
-        }
-        else {
-            try {
-                attributeType = pokemon.moves;
-                attributeType.forEach(attack => {
-                    if (attack.move.name === attribute[1]) {
-                        color = 'green';
-                        props.setScore(props.score + 1)
-                        console.log('compared');
-                        throw BreakException;
-                    }
-                    color = 'red';
-                });
-            }
-            catch(e) {
-                if (e !== BreakException) throw e;
-            }
-        }        
-    }
+    color = correct_pokemon_check(pokemon, attribute, color);
     return <div className = 'Pokemon' style = {{backgroundColor: color}}> 
         <img src = {pokemon.sprites.front_default} />
         <div className = "info"> 

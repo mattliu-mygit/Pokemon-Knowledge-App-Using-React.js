@@ -6,7 +6,7 @@ const PokeSearch = (props) => {
     let handleSubmit = async (event) => {
         event.preventDefault();
         const resp = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
-        props.onSubmit(resp.data);
+        props.onSubmit(resp.data, props.attribute);
         setName('');
     }
     return <div>

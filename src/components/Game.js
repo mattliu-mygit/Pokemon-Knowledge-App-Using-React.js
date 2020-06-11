@@ -1,4 +1,3 @@
-//import React from 'react';
 import React from 'react';
 import GuessList from './GuessList';
 import PokeSearch from './PokeSearch';
@@ -8,7 +7,7 @@ import UseGameState from './UseGameStates';
 
 const Game = (props) => {
     const {pokeList, score, secondsLeft, setScore, setPokeList, addNewPokemon} = UseGameState();
-    const rerollCriteria = () => {
+    const reroll = () => {
         props.randomizer();
         setPokeList([]);
     }
@@ -22,12 +21,12 @@ const Game = (props) => {
                 <div className = 'Result'>
                     <Score score = {score}/>
                 </div>
-                <PokeSearch onSubmit = {addNewPokemon}/>
+                <PokeSearch onSubmit = {addNewPokemon} attribute = {props.attribute}/>
                 <GuessList pokeList = {pokeList} setScore = {setScore} score = {score} attribute = {props.attribute}/>
             </div>
             
             <div className = 'timer'>Time Remaining: {secondsLeft} </div>
-            <button onClick = {rerollCriteria}> Reroll </button>
+            <button onClick = {reroll}> Reroll </button>
             <button onClick = {props.startNewGame}>Play Again </button>
         </div>
     );
