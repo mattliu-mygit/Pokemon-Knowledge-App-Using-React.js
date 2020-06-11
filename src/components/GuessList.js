@@ -5,7 +5,7 @@ const GuessList = (props) => {
     return <div className = 'PokeSearch'>
         Your guesses:
         <div>
-            {props.pokeList.map(pokeList => <Pokemon key = {Pokemon.id} {...pokeList} setScore = {props.setScore}/>)}
+            {props.pokeList.map(pokeList => <Pokemon key = {pokeList.id} {...pokeList} setScore = {props.setScore} attribute = {props.attribute}/>)}
         </div>
     </div>
 }

@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-//import axios from 'axios';
 import GuessList from './GuessList';
 import PokeSearch from './PokeSearch';
 import Score from './Score';
@@ -33,7 +32,7 @@ const Game = (props) => {
                     <Score score = {score}/>
                 </div>
                 <PokeSearch onSubmit = {addNewPokemon}/>
-                <GuessList pokeList = {pokeList} setScore = {setScore}/>
+                <GuessList pokeList = {pokeList} setScore = {setScore} attribute = {props.attribute}/>
             </div>
             <div className = 'timer'>Time Remaining: {secondsLeft} </div>
             <button onClick = {props.startNewGame}> Play Again </button>
