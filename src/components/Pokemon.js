@@ -1,6 +1,8 @@
 import React from 'react';
 import correct_pokemon_check from '../correct-pokemon-check';
 
+//Pokemon info card with tabs?
+
 const Pokemon = (props) => {
     const pokemon = props;
     const attribute = props.attribute;
@@ -21,7 +23,6 @@ const Pokemon = (props) => {
                 attributeSet += types.type.name.toString() + '\n';
             });
         }
-        
     }
     color = correct_pokemon_check(pokemon, attribute, color);
     return <div className = 'Pokemon' style = {{backgroundColor: color}}> 

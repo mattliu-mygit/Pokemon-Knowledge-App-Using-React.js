@@ -7,6 +7,7 @@ import axios from 'axios';
 export function App() {
   const [gameId, setGameId] = useState(1);
   const [attribute, setAttribute] = useState([]);
+  const [gameStart, setGameStart] = useState(false);
   
   const RandomizeAttribute = async () => {
     const randNum =  (min, max) => min + Math.floor(Math.random() * (max - min + 1));
@@ -31,7 +32,10 @@ export function App() {
   return (
     <div>
       <h1>A Pokemon Knowledge Test!</h1>
-      <Game key = {gameId} startNewGame = {() => setGameId(gameId + 1)} randomizer = {RandomizeAttribute} attribute = {attribute}/>
+      <Game key = {gameId} startNewGame = {() => {
+        RandomizeAttribute()
+        return setGameId(gameId + 1);
+      }} randomizer = {RandomizeAttribute} attribute = {attribute} gameStart = {gameStart} setGameStart = {setGameStart}/>
     </div>
   );
 }
