@@ -1,26 +1,17 @@
-import React, {useState, useEffect} from 'react';
+//import React from 'react';
+import React from 'react';
 import GuessList from './GuessList';
 import PokeSearch from './PokeSearch';
 import Score from './Score';
 import Attribute from './Attribute'
+import UseGameState from './UseGameStates';
 
 const Game = (props) => {
-    const [pokeList, setPokeList] = useState([]);
-    const [score, setScore] = useState(0);
-    const [secondsLeft, setSecondsLeft] = useState(60);
-
-    useEffect(()=> {
-        if (secondsLeft > 0) {
-            const timerId = setTimeout(() => setSecondsLeft(secondsLeft - 1), 1000);
-            return () => clearTimeout(timerId);
-        }
-
-    });
-
-    const addNewPokemon = (name) => {
-        setPokeList([...pokeList, name]);
+    const {pokeList, score, secondsLeft, setScore, setPokeList, addNewPokemon} = UseGameState();
+    const rerollCriteria = () => {
+        props.randomizer();
+        setPokeList([]);
     }
-    
     return (
         <div>
             <div className = 'random_attribute'> 
@@ -32,10 +23,12 @@ const Game = (props) => {
                     <Score score = {score}/>
                 </div>
                 <PokeSearch onSubmit = {addNewPokemon}/>
-                <GuessList pokeList = {pokeList} setScore = {setScore} attribute = {props.attribute}/>
+                <GuessList pokeList = {pokeList} setScore = {setScore} score = {score} attribute = {props.attribute}/>
             </div>
+            
             <div className = 'timer'>Time Remaining: {secondsLeft} </div>
-            <button onClick = {props.startNewGame}> Play Again </button>
+            <button onClick = {rerollCriteria}> Reroll </button>
+            <button onClick = {props.startNewGame}>Play Again </button>
         </div>
     );
   }

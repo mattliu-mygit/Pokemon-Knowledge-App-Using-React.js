@@ -11,8 +11,7 @@ export function App() {
   const RandomizeAttribute = async () => {
     const randNum =  (min, max) => min + Math.floor(Math.random() * (max - min + 1));
     const attributeList = ['weight', 'move', 'type'];
-
-    const attributeName = attributeList[randNum(0, attributeList.length)];
+    const attributeName = attributeList[randNum(0, attributeList.length-1)];
     if (attributeName === 'weight') {
         setAttribute([attributeName, randNum(0, 1000)]);
     }
@@ -21,7 +20,7 @@ export function App() {
       if (attributeName === 'move') {
         resp = await axios.get(`https://pokeapi.co/api/v2/${attributeName}/${randNum(1, 400)}`);
       }
-      else {
+      else if (attributeName === 'type') {
         resp = await axios.get(`https://pokeapi.co/api/v2/${attributeName}/${randNum(1, 18)}`);
       }
         const attributes = resp.data;
@@ -29,15 +28,10 @@ export function App() {
         setAttribute([attributeName, attributeLabel]);
     }
   }
-
   return (
     <div>
       <h1>A Pokemon Knowledge Test!</h1>
-      <Game key = {gameId} startNewGame = {() => {
-        RandomizeAttribute();
-        return setGameId(gameId + 1);
-        }
-      } attribute = {attribute}/>
+      <Game key = {gameId} startNewGame = {() => setGameId(gameId + 1)} randomizer = {RandomizeAttribute} attribute = {attribute}/>
     </div>
   );
 }
