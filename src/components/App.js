@@ -28,6 +28,7 @@ export function App() {
         const attributeLabel = attributes.name;
         setAttribute([attributeName, attributeLabel]);
     }
+    
   }
   return (
     <div>

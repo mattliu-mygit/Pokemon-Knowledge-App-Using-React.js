@@ -9,10 +9,11 @@ import StartScreen from './StartScreen';
 // Add error message 
 
 const Game = (props) => {
-    const {pokeList, score, secondsLeft, resultVisible, setScore, setPokeList, addNewPokemon} = UseGameState(props.gameStart);
-    
+    const {pokeList, score, secondsLeft, rerollTimer, resultPokeList, setScore, setPokeList, setRerollTimer, setResultPokeList, addNewPokemon, addNewResultPokemon} = UseGameState(props.gameStart);
+    // Need to make an attribute list and pokemon list
     const reroll = () => {
         props.randomizer();
+        setRerollTimer(5);
         setPokeList([]);
     }
     return (
@@ -28,14 +29,18 @@ const Game = (props) => {
                         <Attribute attribute = {props.attribute}/>
                     </div> 
 
-                    <div>Score: {score}</div>
+                    <div className = 'score'>Score: {score}</div>
                     <div className = 'timer'>Time Remaining: {secondsLeft} </div>
                     <PokeSearch onSubmit = {addNewPokemon} attribute = {props.attribute}/>
                     <GuessList pokeList = {pokeList} setScore = {setScore} score = {score} attribute = {props.attribute}/>
-                    <button onClick = {reroll}> Reroll </button>
+                    <div className = 'reroll_button'>
+                    {
+                        rerollTimer === 0 ? <button onClick = {reroll}> Reroll </button> : <button> {rerollTimer} </button>
+                    }
+                    </div>
                 </div>
                 : <div className = 'result'>
-                    <Results score = {score} startNewGame = {props.startNewGame} resultVisible = {resultVisible}/>
+                    <Results score = {score} startNewGame = {props.startNewGame} pokeList = {resultPokeList} setPokeList = {setResultPokeList} addNewPokemon = {addNewResultPokemon}/>
                 </div>
                 }
             </div>

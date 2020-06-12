@@ -7,30 +7,35 @@ import correct_pokemon_check from '../correct-pokemon-check';
 
 const UseGameState = (gameStart) => {
     const [pokeList, setPokeList] = useState([]);
+    const [resultPokeList, setResultPokeList] = useState([]);
     const [score, setScore] = useState(0);
-    const [secondsLeft, setSecondsLeft] = useState(60);
-    const [resultVisible, setResultVisible] = useState(false);
+    const [secondsLeft, setSecondsLeft] = useState(1);
+    const [rerollTimer, setRerollTimer] = useState(5);
 
     // Fix this so that timer doesn't rerender the WHOLE page every tick. Timer component maybe?
     useEffect(()=> {
         if (secondsLeft > 0 && gameStart) {
-            const timerId = setTimeout(() => setSecondsLeft(secondsLeft - 1), 1000);
+            const timerId = setTimeout(() => {
+                if (rerollTimer > 0) {
+                    setRerollTimer(rerollTimer - 1);
+                }
+                return setSecondsLeft(secondsLeft - 1);}, 1000);
             return () => clearTimeout(timerId);
         }
     });
 
-    if (secondsLeft === 0 && resultVisible === false) {
-        setResultVisible(true);
-    }
-
     const addNewPokemon = (pokemon, attribute) => {
         let color = correct_pokemon_check(pokemon, attribute, 'white');
-        if (color === 'green' && resultVisible == false) {
+        if (color === 'green' && secondsLeft > 0) {
             setScore(score+1)
         }
         setPokeList([...pokeList, pokemon]);
     }
 
-    return {pokeList, score, secondsLeft, resultVisible, setScore, setPokeList, addNewPokemon};
+    const addNewResultPokemon = (pokemon) => {
+        setResultPokeList([...resultPokeList, ...pokemon])
+    }
+
+    return {pokeList, score, secondsLeft, rerollTimer, resultPokeList, setScore, setPokeList, setRerollTimer, setResultPokeList, addNewPokemon, addNewResultPokemon};
 }
 export default UseGameState;
