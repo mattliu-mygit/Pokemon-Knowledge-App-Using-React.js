@@ -18,7 +18,6 @@ const Pokemon = (props) => {
     pokemon.moves.forEach(moves => {
         moveList += moves.move.name.toString() + '\n';
     });
-    console.log('attribute is ', attribute);
     color = correct_pokemon_check(pokemon, attribute, color);
     return <div className = 'Pokemon' style = {{backgroundColor: color}}> 
         <img src = {pokemon.sprites.front_default} />

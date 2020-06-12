@@ -1,6 +1,6 @@
 const correct_pokemon_check = (pokemon, attribute, color) => {
     if (attribute[0] === 'weight') {
-        const weight = attribute[1];
+        const weight = parseInt(attribute[1]);
         if (pokemon.weight < weight + 20 && pokemon.weight > weight -20) {
             color = 'green';
             console.log('compared');

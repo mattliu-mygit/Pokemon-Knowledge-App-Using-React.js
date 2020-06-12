@@ -20,7 +20,6 @@ const AttributeSearch = (props) => {
     
     return <div>
         Search for pokemon here!
-        <h3>Attribute: {attribute}     Value: {value}</h3>
         <form onSubmit = {handleAttributeSubmit}>
             <input
             type = "text"
