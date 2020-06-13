@@ -40,8 +40,14 @@ const Results = (props) => {
     }
 
     return <div className = 'results'>
-        <div className = 'score'>Your score is: {props.score}!</div>
+        <div className = 'score'>Your score is: {props.score}</div>
+        <div>Congrats!</div>
         <button onClick = {props.startNewGame}>Play Again </button>
+        <div>or...</div>
+        <div>Learn some new Pokemon facts below! Give an attribute(type, move, or weight) and a value (attribute, like '888' for 'weight', 'grass' for 'type', or 'rock-smash' for 'move'!</div>
+        <div>When you're ready, press the 'Search for Pokemon' button to search PokeAPI for all the Pokemon that fit your critieria!</div>
+        <h2>Note that for moves of length 2, seperate them with a hyphen(for example 'rock-smash' for 'rock smash').</h2>
+        
         <h3>Attribute: {attr}</h3>     
         <h3>Value: {val}</h3>
         <AttributeSearch onSubmitAttribute = {onSubmitAttribute} onSubmitValue = {onSubmitValue} onClick = {getPokeList}/>
