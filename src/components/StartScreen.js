@@ -1,5 +1,6 @@
 import React from 'react';
 
+// The start screen that the user first sees when opening the app.
 const StartScreen = (props) => {
     return <div>
         <div className = 'description'>A Pokemon knowledge quiz game made with React.js and the PokeAPI, the Restful Pokemon API, developed by Matthew Liu and Kevin Liu.</div>
@@ -9,7 +10,6 @@ const StartScreen = (props) => {
             <div>Gotta answer 'em all!</div>
         </div>
         <button className = 'start_game_button' onClick = {() => {
-        // Maybe a start screen instead of button.
         props.randomizer();
         props.setGameStart(true);
     }}>Start game</button>

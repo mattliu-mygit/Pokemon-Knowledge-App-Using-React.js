@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 
+// A custom hook that handles the dynamiacally changing states of AttributeSearch.
 const UseAttributeState = () => {
     let [attribute, setAttribute] = useState('');
     let [value, setValue] = useState('');
@@ -7,23 +8,28 @@ const UseAttributeState = () => {
     return {attribute, value, submitError, setAttribute, setSubmitError, setValue};
 }
 
+// Code that filters and displays all the Pokemon that satisfy certain filtered characteristics from the Results page.
 const AttributeSearch = (props) => {
     const {attribute, value, submitError, setAttribute, setSubmitError, setValue} = UseAttributeState();
 
-    let handleAttributeSubmit = (event) => {
+    // Called when submitting the attribute type.
+    const handleAttributeSubmit = (event) => {
         const attributeName = attribute.toLowerCase();
         event.preventDefault();
+
+        //If submitted attribute type doesn't match type, weight, or move, error message is submitted.
         if (attributeName !== 'type' && attributeName !== 'weight' && attributeName !== 'move') {
             setSubmitError(true);
         }
         else {
             setSubmitError(false);
+            props.onSubmitAttribute(attributeName);
         }
-        props.onSubmitAttribute(attributeName);
         setAttribute('');
     }
 
-    let handleValueSubmit = async (event) => {
+    // Called when submitting the value type.
+    const handleValueSubmit = async (event) => {
         const valueAmount = value.toLowerCase();
         event.preventDefault();
         props.onSubmitValue(valueAmount);

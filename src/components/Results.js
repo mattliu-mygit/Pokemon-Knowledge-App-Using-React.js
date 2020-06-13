@@ -4,27 +4,31 @@ import AttributeSearch from './AttributeSearch';
 import Pokemon from './Pokemon';
 import correct_pokemon_check from '../correct-pokemon-check';
 
+// A function that retrieves a pokemon based on its number
 const getPokemon = async (pokeNum) => {
-    let var11 = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeNum}`);//.then(data => pokemon = data);
-    return var11;
+    const pokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeNum}`);//.then(data => pokemon = data);
+    return pokemon;
 }
 
+// The final results page that the player sees.
 const Results = (props) => {
     const [attr, setAttr] = useState('');
     const [val, setVal] = useState('')
-    //const [attribs, setAttribs] = useState([]);
     let attribs = [attr, val];
 
+    // A function that sets attr to the attribute submitted from the AttributeSearch
     const onSubmitAttribute = (attribute) => {
         attribute = attribute.toLowerCase();
         setAttr(attribute);
     }
 
+    // A function that sets val the value submitted from the AttributeSearch
     const onSubmitValue = (value) => {
         value = value.toLowerCase();
         setVal(value);
     }
 
+    // Gets a list of Pokemon that have the attribute attr with the value val.
     const getPokeList = async () => {
         let pokemonList = [];
         attribs = [attr, val];
@@ -42,7 +46,10 @@ const Results = (props) => {
     return <div className = 'results'>
         <div className = 'score'>Your score is: {props.score}</div>
         <div className = 'congrats'>Congrats!</div>
-        <button onClick = {props.startNewGame} className = 'playAgain'> Play Again </button>
+        <button onClick = {
+            // Calls on the new game function back in the App component.
+            props.startNewGame
+            } className = 'playAgain'> Play Again </button>
         <div>or...</div>
         <div className = 'instructions'>
             <div>Learn some new Pokemon facts below! Give an attribute(type, move, or weight) and a value (attribute, like '888' for 'weight', 'grass' for 'type', or 'rock-smash' for 'move'!</div>
