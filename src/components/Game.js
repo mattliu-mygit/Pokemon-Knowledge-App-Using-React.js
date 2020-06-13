@@ -31,7 +31,7 @@ const Game = (props) => {
 
                     <div className = 'score'>Score: {score}</div>
                     <div className = 'timer'>Time Remaining: {secondsLeft} </div>
-                    <PokeSearch onSubmit = {addNewPokemon} attribute = {props.attribute}/>
+                    <PokeSearch onSubmit = {addNewPokemon} attribute = {props.attribute} pokeList = {pokeList}/>
                     <GuessList pokeList = {pokeList} setScore = {setScore} score = {score} attribute = {props.attribute}/>
                     <div className = 'reroll_button'>
                     {
