@@ -16,19 +16,13 @@ const Results = (props) => {
     let attribs = [attr, val];
 
     const onSubmitAttribute = (attribute) => {
+        attribute = attribute.toLowerCase();
         setAttr(attribute);
-        console.log(attr);
-        if (attr !== 'move' && attr !== 'type' && attr !== 'weight') {
-            alert('Incorrect attribute name!');
-        }
     }
 
     const onSubmitValue = (value) => {
+        value = value.toLowerCase();
         setVal(value);
-        console.log(val);
-        if (val !== '') {
-            alert('Add a value!');
-        }
     }
 
     const getPokeList = async () => {

@@ -1,20 +1,32 @@
 import React, {useState} from 'react';
 
-const AttributeSearch = (props) => {
+const UseAttributeState = () => {
     let [attribute, setAttribute] = useState('');
     let [value, setValue] = useState('');
+    let [submitError, setSubmitError] = useState(false);
+    return {attribute, value, submitError, setAttribute, setSubmitError, setValue};
+}
+
+const AttributeSearch = (props) => {
+    const {attribute, value, submitError, setAttribute, setSubmitError, setValue} = UseAttributeState();
 
     let handleAttributeSubmit = (event) => {
-        attribute = attribute.toLowerCase();
+        const attributeName = attribute.toLowerCase();
         event.preventDefault();
-        props.onSubmitAttribute(attribute);
+        if (attributeName !== 'type' && attributeName !== 'weight' && attributeName !== 'move') {
+            setSubmitError(true);
+        }
+        else {
+            setSubmitError(false);
+        }
+        props.onSubmitAttribute(attributeName);
         setAttribute('');
     }
 
     let handleValueSubmit = async (event) => {
-        value = value.toLowerCase();
+        const valueAmount = value.toLowerCase();
         event.preventDefault();
-        props.onSubmitValue(value);
+        props.onSubmitValue(valueAmount);
         setValue('');
     }
     
@@ -28,7 +40,12 @@ const AttributeSearch = (props) => {
             placeholder = "Enter an attribute type"
             required
             />
-        </form>
+            {
+            submitError ?
+                <div>Invalid attribute type! Please select amongst type, move, or weight!</div>
+                :null
+            }
+            </form>
         <form onSubmit = {handleValueSubmit}>
             <input 
             type = "text"
