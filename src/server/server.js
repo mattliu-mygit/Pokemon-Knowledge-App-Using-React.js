@@ -31,7 +31,7 @@ if (config.isDev) {
   }
 }
 
-app.get('*', async (req, res) => {
+app.get('/', async (req, res) => {
   try {
     const vars = await serverRenderer();
     res.render('index', vars);

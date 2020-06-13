@@ -1,39 +1,13 @@
-/* Nerdy secret: You can use "less" below! Don't tell anybody... */
-
-/* .github-profile {
-	margin: 1rem;
-  img {
-    width: 75px;
-  }
-  .info {
-    display: inline-block;
-    margin-left: 12px;
-		.name {
-    	font-size: 1.25rem;
-      font-weight: bold;
-    }
-  }
-} */
-
-.PokeSearch {
-  margin: 1rem;
-  
-}
-.Pokemon .info {
-  display: inline-block;
-  margin-left: 12px;
+:root {
+  --color-main: #333;
 }
 
-form {
-	border: thin solid #888;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  display: flex;
-  justify-content: center;
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
 }
 
-.header {
-	text-align: center;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+body {
+  color: var(--color-main);
 }
