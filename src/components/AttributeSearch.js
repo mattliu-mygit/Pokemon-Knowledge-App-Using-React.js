@@ -32,8 +32,8 @@ const AttributeSearch = (props) => {
     
     return <div>
         Search for pokemon here!
-        <form onSubmit = {handleAttributeSubmit}>
-            <input
+        <form onSubmit = {handleAttributeSubmit} className = 'attribute_form'>
+            <input className = 'attribute_input'
             type = "text"
             value = {attribute}
             onChange = {event => setAttribute(event.target.value)}
@@ -42,12 +42,12 @@ const AttributeSearch = (props) => {
             />
             {
             submitError ?
-                <div>Invalid attribute type! Please select amongst type, move, or weight!</div>
+                <div className = 'invalid_attribute'>Invalid attribute type! Please select amongst type, move, or weight!</div>
                 :null
             }
             </form>
-        <form onSubmit = {handleValueSubmit}>
-            <input 
+        <form onSubmit = {handleValueSubmit} className = 'onSubmit_form'>
+            <input className = 'value_input'
             type = "text"
             value = {value}
             onChange = {event => setValue(event.target.value)}
@@ -55,7 +55,7 @@ const AttributeSearch = (props) => {
             required
             />
         </form>
-        <button onClick = {props.onClick}>Search for Pokemon</button>
+        <button className = 'search_button' onClick = {props.onClick}>Search for Pokemon</button>
     </div>
 }
 export default AttributeSearch;

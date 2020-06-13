@@ -21,18 +21,17 @@ const PokeSearch = (props) => {
     
     return <div>
         Search for pokemon here!
-        <form onSubmit = {handleSubmit}>
-            <input 
+        <form onSubmit = {handleSubmit} className = 'submit_form'>
+            <input className = 'submit_input'
             type = "text"
             value = {name}
             onChange = {event => setName(event.target.value)}
             placeholder = "Enter a Pokemon guess"
             required
             />
-            <button> Guess! </button>
             {
             invalidResponse ?
-                <div>Invalid pokemon! Try again!</div>
+                <div className = 'invalid_pokemon'>Invalid pokemon! Try again!</div>
             : null
             }
         </form>

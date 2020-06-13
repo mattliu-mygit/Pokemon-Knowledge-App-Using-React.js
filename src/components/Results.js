@@ -41,17 +41,18 @@ const Results = (props) => {
 
     return <div className = 'results'>
         <div className = 'score'>Your score is: {props.score}</div>
-        <div>Congrats!</div>
-        <button onClick = {props.startNewGame}>Play Again </button>
+        <div className = 'congrats'>Congrats!</div>
+        <button onClick = {props.startNewGame} className = 'playAgain'> Play Again </button>
         <div>or...</div>
-        <div>Learn some new Pokemon facts below! Give an attribute(type, move, or weight) and a value (attribute, like '888' for 'weight', 'grass' for 'type', or 'rock-smash' for 'move'!</div>
-        <div>When you're ready, press the 'Search for Pokemon' button to search PokeAPI for all the Pokemon that fit your critieria!</div>
-        <h2>Note that for moves of length 2, seperate them with a hyphen(for example 'rock-smash' for 'rock smash').</h2>
-        
-        <h3>Attribute: {attr}</h3>     
-        <h3>Value: {val}</h3>
+        <div className = 'instructions'>
+            <div>Learn some new Pokemon facts below! Give an attribute(type, move, or weight) and a value (attribute, like '888' for 'weight', 'grass' for 'type', or 'rock-smash' for 'move'!</div>
+            <div>When you're ready, press the 'Search for Pokemon' button to search PokeAPI for all the Pokemon that fit your critieria!</div>
+            <div>Note that for moves of length 2, seperate them with a hyphen(for example 'rock-smash' for 'rock smash').</div>
+        </div>
+        <h3 className = 'attribute'>Attribute: {attr}</h3>     
+        <h3 className = 'value'>Value: {val}</h3>
         <AttributeSearch onSubmitAttribute = {onSubmitAttribute} onSubmitValue = {onSubmitValue} onClick = {getPokeList}/>
-        <div>{props.pokeList.map(pokeList => <Pokemon key = {pokeList.id} {...pokeList} attribute = {attribs} />)}
+        <div className = 'pokemon_list'>{props.pokeList.map(pokeList => <Pokemon key = {pokeList.id} {...pokeList} attribute = {attribs} />)}
         </div>
     </div>
 }

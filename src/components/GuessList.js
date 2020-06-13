@@ -4,7 +4,7 @@ import Pokemon from './Pokemon';
 const GuessList = (props) => {
     return <div className = 'PokeSearch'>
         Your guesses:
-        <div>
+        <div className = 'guesses'>
             {props.pokeList.map(pokeList => <Pokemon key = {pokeList.id} {...pokeList} attribute = {props.attribute} />)}
         </div>
     </div>
