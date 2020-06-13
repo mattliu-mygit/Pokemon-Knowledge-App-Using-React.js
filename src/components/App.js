@@ -31,6 +31,7 @@ export function App() {
         setAttribute([attributeName, randNum(0, 1000)]);
     }
     else {
+      // Non-weight related attributes handled differently than the weight attribute.
       let resp;
       if (attributeName === 'move') {
         // Gets a random move from 400 possible moves.
@@ -50,8 +51,8 @@ export function App() {
       <h1>A Pokemon Knowledge Test!</h1>
       <Game key = {gameId} startNewGame = {() => {
         /* A function that starts a new game used in the 'play again' button in the Results page.
-          When starting a new game, randomizes the attribute and changes the game id so the entire app is
-          replaced with a new iteration of the app. */
+          When starting a new game, randomizes the attribute and changes the game id so the entire game is
+          replaced with a new iteration of the game. */
         RandomizeAttribute()
         return setGameId(gameId + 1);
       }} randomizer = {RandomizeAttribute} attribute = {attribute} gameStart = {gameStart} setGameStart = {setGameStart}/>
