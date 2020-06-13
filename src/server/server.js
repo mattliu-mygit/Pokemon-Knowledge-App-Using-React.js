@@ -6,6 +6,7 @@ import serialize from 'serialize-javascript';
 import config from 'server/config';
 import { serverRenderer } from 'renderers/server';
 
+const PORT = process.env.PORT || '8000';
 const app = express();
 app.enable('trust proxy');
 app.use(morgan('common'));
@@ -44,3 +45,5 @@ app.get('/', async (req, res) => {
 app.listen(config.port, config.host, () => {
   console.info(`Running on ${config.host}:${config.port}...`);
 });
+
+app.set("port", PORT);
