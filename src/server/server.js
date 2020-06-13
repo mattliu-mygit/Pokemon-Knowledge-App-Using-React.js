@@ -1,4 +1,4 @@
-import express from 'express';
+//import express from 'express';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import serialize from 'serialize-javascript';
@@ -6,7 +6,18 @@ import serialize from 'serialize-javascript';
 import config from 'server/config';
 import { serverRenderer } from 'renderers/server';
 
-const app = express();
+var express = require('express')
+var path = require('path')
+var serveStatic = require('serve-static')
+
+var app = express()
+app.use(serveStatic(path.join(__dirname, 'dist')))
+
+var port = process.env.PORT || 8000
+app.listen(port)
+console.log('server started ' + port)
+
+//const app = express();
 app.enable('trust proxy');
 app.use(morgan('common'));
 
