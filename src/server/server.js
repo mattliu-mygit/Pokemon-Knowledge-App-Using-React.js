@@ -6,18 +6,7 @@ import serialize from 'serialize-javascript';
 import config from 'server/config';
 import { serverRenderer } from 'renderers/server';
 
-//var express = require('express')
-var path = require('path')
-var serveStatic = require('serve-static')
-
-const app = express()
-app.use(serveStatic(path.join(__dirname, 'dist')))
-
-var port = process.env.PORT || 8000
-app.listen(port)
-console.log('server started ' + port)
-
-//const app = express();
+const app = express();
 app.enable('trust proxy');
 app.use(morgan('common'));
 
@@ -42,7 +31,7 @@ if (config.isDev) {
   }
 }
 
-app.get('*', async (req, res) => {
+app.get('/', async (req, res) => {
   try {
     const vars = await serverRenderer();
     res.render('index', vars);
