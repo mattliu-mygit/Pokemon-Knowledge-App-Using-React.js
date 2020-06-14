@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Game from './Game'
 import axios from 'axios';
 
-// An app that tests your Pokemon knowledge!
+// An app that tests your Pokemon knowledge! Probably not getting deployed ;(.
 
 // A custom hook that handles all the dynamically changing states.
 const UseAppState = () => {
