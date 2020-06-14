@@ -4,3 +4,5 @@ Test your Pokemon knowledge by guessing as many Pokemon that match a generated c
 Specify a characteristic after and explore the different Pokemon that filter through!
 
 In order to run this app, download or clone the code and install the necessary dependencies. Then, enter 'npx reactful start' and check your localhost:1234!
+
+(Excuse all my commits, I've been trying to deploy this server-rendered React code on many platforms in vain; I'm not ususally like this I swear like c'mon 20ish commits in a day??? ASKJFHAKLSDHFASd)
