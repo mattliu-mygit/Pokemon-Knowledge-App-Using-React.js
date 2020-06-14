@@ -41,7 +41,7 @@ app.get('/', async (req, res) => {
   }
 });
 
-app.listen(process.env.PORT || config.port, config.host, () => {
+app.listen(config.port, config.host, () => {
   console.info(`Running on ${config.host}:${config.port}...`);
 });
 
