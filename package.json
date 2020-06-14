@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "eslint": "eslint \"src/**/*.js\"",
-    "start": "npm install concurrently && concurrently \"npm run dev:server\" \"npm run dev:bundler\"",
+    "start": "concurrently \"npm run dev:server\" \"npm run dev:bundler\"",
     "dev:server": "cross-env NODE_PATH=./src nodemon --exec \"babel-node src/server/server.js\" --ignore .reactful.json --ignore public/",
     "dev:bundler": "webpack -wd",
     "build:react": "cross-env NODE_ENV=production webpack --progress -p",
@@ -38,6 +38,7 @@
     "body-parser": "^1.19.0",
     "cross-env": "^7.0.2",
     "css-loader": "^3.6.0",
+    "concurrently": "^5.2.0",
     "ejs": "^3.1.3",
     "express": "^4.17.1",
     "mini-css-extract-plugin": "^0.9.0",
