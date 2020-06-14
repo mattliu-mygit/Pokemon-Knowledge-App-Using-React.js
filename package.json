@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "eslint": "eslint \"src/**/*.js\"",
-    "start": "\npm install concurrently\" concurrently \"npm run dev:server\" \"npm run dev:bundler\"",
+    "start": "\"npm install concurrently\" concurrently \"npm run dev:server\" \"npm run dev:bundler\"",
     "dev:server": "cross-env NODE_PATH=./src nodemon --exec \"babel-node src/server/server.js\" --ignore .reactful.json --ignore public/",
     "dev:bundler": "webpack -wd",
     "build:react": "cross-env NODE_ENV=production webpack --progress -p",
