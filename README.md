@@ -3,8 +3,7 @@ A Pokemon knowledge test app made with react.js utilizing a Restful Pokemon API.
 Test your Pokemon knowledge by guessing as many Pokemon that match a generated characteristic in 60 seconds within a completely Reactive page.
 Specify a characteristic after and explore the different Pokemon that filter through!
 
-In order to run this app, download or clone the code and 'npm install' the necessary dependencies. Then, enter 'npx reactful start' and check your localhost:1234!
+Check it out here: https://pokemon-knowledge-app.herokuapp.com/
+Future deployment may come in the form of nginx. Looking further into it and learning how to. For now, converted it to a client-side rendered create-react-app and deployed on Heroku.
 
-(Excuse all my commits, I've been trying to deploy this server-rendered React code on many platforms in vain; I'm not ususally like this I swear like c'mon 20 commits in a day??? ASKJFHAKLSDHFASd)
-
-Future deployment may come in the form of nginx. Looking further into it and learning how to. Deployment put on hold till then.
+(Excuse all my commits, I've been trying to deploy this server-rendered React code on many platforms in vain; I'm not ususally like this I swear)
