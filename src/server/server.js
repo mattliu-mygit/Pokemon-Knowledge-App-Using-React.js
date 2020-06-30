@@ -1,4 +1,4 @@
-import express from 'express';
+//import express from 'express';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import serialize from 'serialize-javascript';
@@ -6,6 +6,7 @@ import serialize from 'serialize-javascript';
 import config from 'server/config';
 import { serverRenderer } from 'renderers/server';
 
+const express = require('express');
 const app = express();
 app.enable('trust proxy');
 app.use(morgan('common'));
@@ -32,13 +33,13 @@ if (config.isDev) {
 }
 
 app.get('/', async (req, res) => {
-  try {
+  //try {
     const vars = await serverRenderer();
     res.render('index', vars);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Server error');
-  }
+  // } catch (err) {
+  //   console.error(err);
+  //   res.status(500).send('Server error');
+  // }
 });
 
 app.listen(process.env.PORT || 1234, () => {
